@@ -1,6 +1,6 @@
 class Instructor::CoursesController < ApplicationController
-before_action :authenticate_user!
-before_action :require_authorized_for_current_course, only: [:show]
+  before_action :authenticate_user!
+  before_action :require_authorized_for_current_course, only: [:show]
 
   def new
     @course = Course.new
@@ -13,6 +13,10 @@ before_action :require_authorized_for_current_course, only: [:show]
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @section = Section.new
   end
 
   private
